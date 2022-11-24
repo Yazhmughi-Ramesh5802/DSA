@@ -1,0 +1,30 @@
+//STEP 1 : GET THE POSITION OF THE ZERO AND STORE IT IN ROW ARRAY AND COLUMN ARRAY
+//STEP 2 : TRAVERSE THE RESPECTIVE ARRAY AND MAKE THE ELEMENTS AT THE POSITION ZERO
+
+
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        ArrayList <Integer> arr1 = new ArrayList <Integer> ();
+        ArrayList <Integer> arr2 = new ArrayList <Integer> ();
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                    arr1.add(i);
+                    arr2.add(j);
+                }
+            }
+        } 
+        for(int i=0;i<arr1.size();i++){
+            for(int j=0;j<matrix[0].length;j++){
+                matrix[arr1.get(i)][j]=0;
+            }
+        }
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<arr2.size();j++){
+                matrix[i][arr2.get(j)]=0;
+            }
+        }
+
+    }
+}
