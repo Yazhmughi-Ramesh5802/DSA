@@ -1,0 +1,15 @@
+// STEP 1 : CREATE FREQUENCY ARRAY
+// STEP 2 : AT EACH INCREMENT CHECK IF FREQUENCY GREATER THAN 1 IF SO BREAK ELSE CONTINUE
+
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        
+        int[] freq = new int[nums.length+1];
+        for(int i=0;i<nums.length;i++){
+            freq[nums[i]]++;
+            if(freq[nums[i]]>1) return nums[i];
+        }
+        return 0;
+    }
+}
