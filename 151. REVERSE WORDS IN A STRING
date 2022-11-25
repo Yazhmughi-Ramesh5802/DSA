@@ -1,0 +1,30 @@
+// REVERSE EACH WORD AND TRIM THE SPACES IN BOTH ENDS
+class Solution {
+    public String reverseWords(String s) {
+        ArrayList <String> arr = new ArrayList<String> ();
+        s+=" ";
+        String temp="";
+        String t="";
+        for(int i=0;i<s.length();i++){
+            //if(s.charAt(i+1)==' ' && s.charAt(i)==' '){}
+            if(s.charAt(i)==' ' ){
+                if(temp==""){}
+                else{
+                    arr.add(temp);
+                    System.out.println(arr);
+                    temp="";
+                }
+            }
+            else{
+                temp+=Character.toString(s.charAt(i));
+            }
+        }
+        String out="";
+        for(int j=arr.size()-1;j>-1;j--){
+            out+=arr.get(j);
+            out+=" ";
+            //System.out.print(arr.get(j)+" ");
+        }
+        return out.trim();
+    }
+}
