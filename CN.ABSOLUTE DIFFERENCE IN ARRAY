@@ -1,0 +1,40 @@
+// STEP 1 : IF LENGTH OF ARRAYLIST = 1 THEN ADD ARR[0] AND ADD 0 IN RESULTANT ARRAYLIST AND RETURN
+// STEP 2 : ELSE SET SUM_ODD = ARR[1] AND SUM_EVEN = ARR[0]
+// STEP 3 : TRAVERSE USING FOR LOOP FROM I = 2 TO END OF ARRAY(N)
+// STEP 4 : IF I IS EVEN THEN SUM_EVEN = MATH.ABS(SUM_EVEN - ARR[I])
+// STEP 5 : ELSE (I BEING ODD) THEN SUM_ODD = MATH.ABS(SUM_ODD - ARR[I])
+// STEP 6 : ONCE LOOP IS OVER ADD SUM_EVEN FOLLOWED BY SUM_ODD IN THE RESULTANT ARRAYLIST AND RETURN THE ARRAYLIST
+
+
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+	public static ArrayList<Integer> absDiff(ArrayList<Integer> arr, int n) {
+        ArrayList<Integer> ans= new ArrayList <Integer> ();
+        if(arr.size()==1) {
+            ans.add(arr.get(0));
+            ans.add(0);
+            return ans;
+        }
+            
+        int sum_odd=arr.get(1);
+        int sum_even=arr.get(0);
+        
+		for(int i=2;i<arr.size();i++){
+            if(i%2==0){
+                sum_even=Math.abs(sum_even-arr.get(i));
+                //System.out.println(sum_even);
+            }
+            else{
+                sum_odd=Math.abs(sum_odd-arr.get(i));
+            }
+        }
+       
+         ans.add(sum_even);
+         ans.add(sum_odd);
+        //System.out.println(ans);
+        return ans;
+	}
+}
