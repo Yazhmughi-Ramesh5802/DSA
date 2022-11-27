@@ -1,0 +1,11 @@
+// PYTHON SOLUTION
+
+from typing import *
+
+
+def find_unity(n: int, x: List[int]) -> int:
+   prod=1
+   for i in range(n):
+        prod*=x[i]
+   return prod%10
+   
