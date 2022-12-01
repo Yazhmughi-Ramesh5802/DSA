@@ -1,0 +1,27 @@
+// PYTHON SOLUTION
+STEP 1 : DIVIDE THE STRING INTO 2(L=LENGTH OF STRING/2)
+STEP 2 : INITIALIZE COUNT1=0,COUNT2=0,STRING VOWEL="AEIOUaeiou"
+STEP 3 : TRAVERSE THE STRING FROM 0 TO L USING FOR LOOP
+STEP 4 : IF THE LETTERS IN STRING1 OR STRING2 ARE PRESENT IN VOWEL INCREASE THE RESPECTIVE COUNT BY 1
+STEP 5 : ONCE FOR LOOP ENDS, CHECK IF COUNT1 = COUNT2 THEN RETURN TRUE
+STEP 6 : ELSE RETURN FALSE
+
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        l=len(s)//2;
+        a=s[0:l]
+        b=s[l:]
+        print(a)
+        print(b)
+        count1=0
+        count2=0
+        vow="aeiouAEIOU"
+        for i in range(len(a)):
+            if(a[i] in vow):
+                count1+=1
+            if(b[i] in vow):
+                count2+=1
+        if(count1==count2):
+            return True
+        else:
+            return False
