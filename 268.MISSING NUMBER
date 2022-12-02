@@ -1,0 +1,15 @@
+// PYTHON SOLUTION
+
+// STEP 1 : FIND SUM OF NUMBERS OF THE GIVEN RANGE 0 TO N (TOTAL SUM)
+// STEP 2 : FIND SUM OF ARRAY ELEMENTS (ARRAY SUM)
+// STEP 3 : ANSWER = TOTAL SUM - ARRAY SUM (MISSING NUMBER)
+
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        sums=0
+        for i in range(len(nums)+1):
+            sums+=i
+        print(sums)
+        ans=sums-sum(nums)
+        return ans
