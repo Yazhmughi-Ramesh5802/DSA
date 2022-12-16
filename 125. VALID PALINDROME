@@ -1,0 +1,14 @@
+// PYTHON SOLUTION
+//STEP 1 : COMBINE THE STRING WITH ONLY ALPHANUMERIC CHARACTERS AND REMOVE OTHER CHARACTERS
+//STEP 2 : CHECK IF STRING IS PALINDROME
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        out=""
+        for i in s: 
+            if(i.isalnum()):
+                out+=i.lower()
+        print(out)
+        if(out[::-1]==out):
+            return True
+        else:
+            return False
