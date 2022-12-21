@@ -1,0 +1,17 @@
+//STEP 1 : INCREASE FREQUENCY FOR 1ST STRING
+//STEP 2 : DECREASE FREQUENCY FOR 2ND STRING
+//STEP 3 : IF ALL FREQUENCY VALUES ARE ZEROS RETURN TRUE , ELSE RETURN FALSE
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        int[] freq = new int[256];
+        for(int i=0;i<s.length();i++){
+            freq[(int)s.charAt(i)]++;
+            freq[(int)t.charAt(i)]--;
+        }
+        for(int i=65;i<256;i++){
+            if(freq[i]!=0) return false;
+        }
+        return true;
+    }
+}
