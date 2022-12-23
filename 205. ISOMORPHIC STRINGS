@@ -1,0 +1,19 @@
+// STEP 1 : WE CREATE TWO HASHMAPS (MAP1 AND MAP2)
+// STEP 2 : WE TRAVERSE THE ENTIRE STRING
+// STEP 3 : IF THE CHARACTER (OF STRING 1) IS CONTAINED IN MAP1 AS KEY AND ITS VALUE IS NOT CHARACTER(OF STRING 2) OR IF THE CHARACTER (OF STRING 2) IS CONTAINED IN MAP2 AS KEY AND ITS VALUE IS NOT CHARACTER(OF STRING 1) THEN 
+            RETURN FALSE
+// STEP 4 : IF THE LOOP COMPLETES SUCCESSFULLY THEN THE ISOMORPHIC CONDITIONS ARE SATISFIED SO RETURN TRUE
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap <Character,Character> map1 = new HashMap<>();
+        HashMap <Character,Character> map2 = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            
+            if((map1.containsKey(s.charAt(i))&& map1.get(s.charAt(i))!=t.charAt(i)) || (map2.containsKey(t.charAt(i))&& map2.get(t.charAt(i))!=s.charAt(i))) return false;
+            map1.put(s.charAt(i),t.charAt(i));
+            map2.put(t.charAt(i),s.charAt(i));
+        }
+        return true;
+    }
+}
