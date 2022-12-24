@@ -1,0 +1,11 @@
+// PYTHON SOLUTION 
+// STEP 1 : WE CREATE A SET OF THE LIST GIVEN
+// STEP 2 : IF LENGTH OF THE SET IS LESS THAN LENGTH OF THE LIST (WHICH MEANS ATLEAST ONE ELEMENT IS REPEATED) RETURN TRUE
+// STEP 3 : ELSE RETURN FALSE
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        dup=set(nums)
+        if(len(dup)<len(nums)):
+            return True
+        else:
+            return False
