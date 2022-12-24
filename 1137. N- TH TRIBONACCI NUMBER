@@ -1,0 +1,22 @@
+// STEP 1 : GIVE THE BASE CONDITIONS AND THEIR RETURN VALUES
+// STEP 2 : CREATE A ARRAY OF SIZE N+1 SO TO ACCOMDATE
+// STEP 3 : INITIALIZE THE 0 , 1 , 2 ELEMENTS OF THE ARRAY 
+// STEP 4 : CALCULATE THE SERIES ANS[I] = ANS[I-3]+ANS[I-2]+ANS[I-1]
+// STEP 5 : ONCE FOR LOOP ENDS RETURN ANS[N]
+// NOTE : THIS CAN BE DONE IN RECURSION ...BUT TIME LIMIT EXCEEDS AND HENCE WE USE FOR LOOP FOR THE SAME
+
+
+class Solution {
+    public int tribonacci(int n) {
+        if(n==0 ||n==1) return n;
+        if(n==2) return 1;
+        int[] ans = new int[n+1];
+        ans[0]=0;
+        ans[1]=1;
+        ans[2]=1;
+        for(int i=3;i<=n;i++){
+            ans[i]=ans[i-3]+ans[i-2]+ans[i-1];
+        } 
+        return ans[n];
+    }
+}
