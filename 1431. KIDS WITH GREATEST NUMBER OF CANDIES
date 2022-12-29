@@ -1,0 +1,21 @@
+// PYTHON SOLUTION
+
+
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        ans=[]
+        for i in range(len(candies)):
+            candies[i]+=extraCandies
+            a=max(candies)
+            if(a==candies[i]):
+                # print("true")
+                ans.append(True)
+            else:
+                # print("false")
+                ans.append(False)
+            candies[i]-=extraCandies
+        # print(ans)
+        return ans
+        
+        
+        
