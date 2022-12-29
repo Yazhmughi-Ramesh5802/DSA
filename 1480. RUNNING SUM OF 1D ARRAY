@@ -1,0 +1,11 @@
+// PYTHON SOLUTION 
+
+
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        ans=[]
+        ans.append(nums[0])
+        for i in range(2,len(nums)+1):
+            Sum=sum(nums[0:i])
+            ans.append(Sum);
+        return ans;
