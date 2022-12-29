@@ -1,0 +1,26 @@
+//PYTHON SOLUTION
+
+
+class Solution:
+    def numberOfLines(self, widths: List[int], s: str) -> List[int]:
+        Sum=[]
+        sum1=0;
+        j=0;
+        for i in range(len(s)):
+            num=ord(s[i])-97
+            width=widths[num]
+            
+            if(sum1+width<=100):
+                sum1+=width
+                # print(sum1)
+            else:
+                j+=1
+                sum1=0
+                sum1=width
+            print(sum1)
+        j+=1
+        # print(j," ",sum1)
+        ans=[]
+        ans.append(j)
+        ans.append(sum1)
+        return ans
