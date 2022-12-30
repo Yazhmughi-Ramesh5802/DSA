@@ -1,0 +1,11 @@
+// PYTHON SOLUTION
+
+
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        ans = sqrt(num)
+        final_ans=floor(ans)
+        if((ans*ans)==(final_ans*final_ans)):
+            return True 
+        else:
+            return False
