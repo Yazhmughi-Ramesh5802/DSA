@@ -1,0 +1,7 @@
+// PYTHON SOLUTION
+
+
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        a=str(format(n,'b'))
+        return a.count("1")
