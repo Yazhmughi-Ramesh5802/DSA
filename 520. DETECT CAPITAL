@@ -1,0 +1,29 @@
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        flag=1;
+        for i in range(len(word)):
+            if(word[i].isupper()):
+                flag=1;
+            else:
+                flag=0
+                break;
+        if(flag==1):
+            return True;
+        
+        else:
+            stat=1;
+            for i in range(len(word)):
+                if(word[i].islower()):
+                    stat=1;
+                else:
+                    stat=0
+                    break;
+            if(stat==1):
+                return True
+            else:
+                dup=word
+                if(dup.capitalize()==word):
+                    return True;
+                else:
+                    return False
+            
