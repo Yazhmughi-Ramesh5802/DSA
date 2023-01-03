@@ -1,0 +1,20 @@
+//PYTHON SOLUTION
+
+
+class Solution:
+    def reverseOnlyLetters(self, s: str) -> str:
+        ans=""
+        lst=[]
+        for i in range(len(s)):
+            if(s[i].isalpha()):
+                lst.append(s[i])
+        lst.reverse()
+        k=0
+        for i in range(len(s)):
+            if(s[i].isalpha()):
+                ans+=lst[k]
+                k+=1
+            else:
+                ans+=s[i]
+            
+        return ans;
