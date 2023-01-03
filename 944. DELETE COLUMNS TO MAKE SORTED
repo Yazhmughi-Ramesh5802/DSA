@@ -1,0 +1,28 @@
+//PYTHON SOLUTION
+
+// STEP 1: APPENDING EACH LETTER OF THE WORDS IN MAIN_LST AND COMPARING LST( 1ST LETTER, 2ND LETTER SO ON ..)
+// STEP 2: WE SORT ONE LIST AND COMPARE WITH OTHER 
+// STEP 3: IF EQUAL JUST PASS, ELSE COUNT+=1
+// STEP 4: CLEAR THE LISTS AFTER THE INNER FOR LOOP COMPLETES THE EXECUTION
+// STEP 5: RETURN THE COUNT
+
+
+
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        lst=[]
+        main_lst=[]
+        count=0
+        for i in range(len(strs[0])):
+            for j in range(len(strs)):
+                lst.append(strs[j][i])
+                main_lst.append(strs[j][i])
+                lst.sort()
+            if(lst==main_lst):
+                pass
+            else:
+                count+=1
+                print(lst," ",main_lst)
+            lst=[]
+            main_lst=[]
+        return count
