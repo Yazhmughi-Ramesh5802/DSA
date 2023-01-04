@@ -1,0 +1,20 @@
+// PYTHON SOLUTION
+
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        l=len(s)
+        S=goal
+        word=""
+        while(l!=0):
+            a=s[0]
+            b=s[1:]
+            word=b+a
+            
+            s=word
+            
+            l-=1
+            if(s==S):
+                print(s+" "+S)
+                return True
+        else:
+            return False
