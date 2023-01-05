@@ -1,0 +1,22 @@
+class Solution {
+    public int distinctAverages(int[] nums) {
+        Arrays.sort(nums);
+        ArrayList <Integer> arr = new ArrayList<Integer>();
+        ArrayList <Double> ans = new ArrayList <Double>();
+        for(int i=0;i<nums.length;i++) arr.add(nums[i]);
+        System.out.print(arr);
+        while(!arr.isEmpty()){
+            int a = arr.get(0);
+            int b = arr.get(arr.size()-1);
+            double avg = (double)(a+b)/(double)2;
+            System.out.println(avg);
+        
+            if(!ans.contains(avg)) ans.add(avg);
+            arr.remove(0);
+            arr.remove(arr.size()-1);
+
+        }
+        System.out.println(ans);
+        return ans.size();
+    }
+}
