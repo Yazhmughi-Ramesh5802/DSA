@@ -1,0 +1,21 @@
+class Solution {
+    public int findSpecialInteger(int[] arr) {
+        
+        int per = (int)Math.floor((0.25*arr.length));
+        System.out.print(per);
+        int a = arr[0];
+        int count=1;
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]==a){
+                count++;
+            }
+            else if(arr[i]!=a){
+                
+                if(count>(per)) return a;
+                a=arr[i];
+                count=1;
+            }
+        }
+        return a;
+    }
+}
