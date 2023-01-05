@@ -1,0 +1,17 @@
+// PYTHON SOLUTION
+
+class Solution:
+    def canBeTypedWords(self, text: str, brokenLetters: str) -> int:
+        lst = text.split(" ")
+        stat=0
+        count=0
+        for i in range(len(lst)):
+            stat=0
+            for j in lst[i]:
+                if j in brokenLetters:
+                    stat=1
+                    break
+            if(stat==0):
+                count+=1
+        return count
+            
