@@ -1,0 +1,32 @@
+// STEP 1 : WE ARE CALCULATING THE SIZE OF THE NUMBER USING IF ELSE CONDITION
+// STEP 2 : WE NEED TO CHANGE ONLY THE NUMBER 6 TO 9 TO GET A BIGGER NUMBER
+// STEP 3 : WE KEEP SEARCHING FOR 6 IN FROM THE FIRST POSITION ( 1ST POS - ADD 3000 TO THE NUMBER , 2ND POS - ADD 300 TO THE NUMBER , 3RD POS - ADD 30 TO THE NUMBER , 4TH POS ADD 3 TO THE NUMBER)
+// STEP 4 : ELSE WE RETURN THE NUMBER
+
+class Solution {
+    public int maximum69Number (int num) {
+        int size=0;
+        if(num<10) size=1;
+        else if(num>=10 && num<100) size=2;
+        else if(num>=100 && num<1000) size=3;
+        else if(num>=1000 && num<10000) size=4;
+        int[] arr = new int[size];
+        int number = num;
+        int i=0;
+        while(num!=0){
+            int d = num%10;
+            arr[i++]=d;
+            num=num/10;
+        }
+        for(int j=size-1;j>-1;j--){
+            if(arr[j]==6){
+                int p = (int)(Math.pow(10,j));
+                number+=((3)*p);
+                System.out.println(number+" "+j+" "+p);
+                return number;
+            }
+        }
+        return number;
+
+    }
+}
