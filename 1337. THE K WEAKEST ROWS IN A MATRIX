@@ -1,0 +1,22 @@
+// PYTHON SOLUTION
+
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        
+        ans=[]
+        temp=[]
+        for i in range(len(mat)):
+            a=mat[i].count(1)
+            temp.append(a)
+            temp.append(i)
+            ans.append(temp)
+            temp=[]
+        ans.sort()
+        print(ans)
+        main=[]
+        for i in range(len(ans)):
+            if i<k:
+                main.append(ans[i][1])
+
+        return main
+    
