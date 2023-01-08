@@ -1,0 +1,25 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        ArrayList <List<Integer>> ans = new ArrayList<List<Integer>>();
+        List <Integer> temp = new ArrayList<>();
+        List <Integer> prev = new ArrayList<>();
+        for(int i=0;i<=rowIndex;i++){
+            for(int j=0;j<i+1;j++){
+                if(j==0 || j==i){
+                    temp.add(1);
+                }
+                else{
+                    int b = prev.get(j)+prev.get(j-1);
+                    temp.add(b);
+                }
+                
+            }
+            System.out.println(temp);
+            ans.add(temp);
+            prev=temp;
+            temp=new ArrayList<>();
+        }
+
+        return ans.get(ans.size()-1);
+    }
+}
