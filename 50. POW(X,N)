@@ -1,0 +1,33 @@
+STEP 1: 2^10 (EVEN) = (2*2)^5 = 4^5
+STEP 2: 4^5 (ODD) = 4*(4^4)
+STEP 3: 4^4 (EVEN) = (4*4)^2 = 16^2
+STEP 4: 16^2 (EVEN) = (16*16)^1
+STEP 5: ANS = (16*16) * 4 = 1024 (FROM STEP 2 ODD)
+
+IF POWER IS EVEN WE REDUCE IT AS POWER/2 IN NEXT STEP
+IF POWER IS ODD WE REDUCE IT AS POWER - 1 IN NEXT STEP
+
+
+
+
+
+class Solution {
+    public double myPow(double x, int n) {
+        double ans = 1.0;
+        double num = n;
+        if(num<0) num=num*-1;
+        while(num!=0){
+            if(num%2==0){
+                x=x*x;
+                num=num/2;
+            }
+            else{
+                ans=ans*x;
+                num=num-1;
+            }
+            System.out.println(x);
+        }
+        if(n<0) ans = (double)1.0 / ans;
+        return ans;
+    }
+}
