@@ -1,0 +1,26 @@
+class Solution {
+    public String digitSum(String s, int k) {
+        String sub="";
+        String temp="";
+        int sum=0;
+        while(s.length()>k){
+            System.out.println("S= "+s+" ");    
+            temp="";
+            for(int i=0;i<s.length();i++){
+                sub=s.substring(i,Math.min(i+(k),s.length()));
+                i+=(k-1);
+                
+                System.out.println(sub);
+                sum=0;
+                for(int j=0;j<sub.length();j++){
+                    sum+=sub.charAt(j)-'0';
+                }
+                temp+=Integer.toString(sum);
+                
+            }
+            s=temp;
+            System.out.println(s+" ");
+        }
+        return s;
+    }
+}
