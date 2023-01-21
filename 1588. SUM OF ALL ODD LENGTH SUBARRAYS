@@ -1,0 +1,48 @@
+class Solution {
+    public int sumOddLengthSubarrays(int[] arr) {
+        int sum=0;
+        if(arr.length<3) {
+            for(int i=0;i<arr.length;i++) sum+=arr[i];
+            return sum;
+        }
+
+        
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                int a = j-i;
+                if(a%2==0) {
+                    for(int k=i;k<=j;k++) {
+                        System.out.print(arr[k]+" ");
+                        sum+=arr[k];
+                    }
+                }
+                if(i==0 && j==arr.length-1){
+                    for(int l=i;l<=j;l++) {
+                        System.out.print(arr[l]+" ");
+                        sum+=arr[l];
+                    }
+                }
+                
+                System.out.println("sum= "+sum);
+            }
+        }
+        
+        return sum;
+    }
+}
+
+// class Solution {
+//     public int sumOddLengthSubarrays(int[] arr) {
+//         int n = arr.length;
+//         int res = 0;
+//         for (int i = 0; i < n; i++) {
+//             for (int j = i; j < n; j++) {
+//                 if ((j - i + 1) % 2 == 0) continue;
+//                 for (int k = i; k <= j; k++) {
+//                     res += arr[k];
+//                 }
+//             }
+//         }
+//         return res;
+//     }
+// }
