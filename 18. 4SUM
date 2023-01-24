@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        long target1=(long)target;
+        Arrays.sort(nums);
+        List<List<Integer>> ans = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                long target2=target1-nums[i]-nums[j];
+                //System.out.println("target2 = "+target2);
+                int front = j+1;
+                int last = nums.length-1;
+                while(front<last){
+                    long a = nums[front]+nums[last];
+                    //System.out.println("a = "+a);
+                    if(a>target2) last--;
+                    else if(a<target2) front++;
+                    else if(a==target2){
+                       // System.out.println(nums[i]+" "+nums[j]+" "+nums[front]+" "+nums[last]);
+                        System.out.println(2 * a);
+                        if(!ans.contains(Arrays.asList(nums[i],nums[j],nums[front],nums[last])))
+                    ans.add(Arrays.asList(nums[i],nums[j],nums[front],nums[last]));
+                        front++;
+                        last--;
+                    }
+                    
+                }
+                
+            }
+        }
+        return ans;
+
+    }
+}
