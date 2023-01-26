@@ -1,0 +1,31 @@
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        Arrays.sort(stones);
+        ArrayList <Integer> arr = new ArrayList<>();
+        for(int i=0;i<stones.length;i++) arr.add(stones[i]);
+        while(arr.size()>1){
+            Collections.sort(arr);
+            System.out.println(arr);
+            int x = arr.get(arr.size()-1);
+            int y = arr.get(arr.size()-2);
+            System.out.println(x+" "+y);
+            if(x==y){
+                arr.remove(arr.size()-1);
+                arr.remove(arr.size()-1);
+                
+            }
+            else{
+                int n = x-y;
+                arr.set(arr.size()-2,n);
+                arr.remove(arr.size()-1);
+                
+
+            }
+            
+        }
+        System.out.println(arr);
+        if(arr.size()==0) return 0;
+        return arr.get(0);
+
+    }
+}
