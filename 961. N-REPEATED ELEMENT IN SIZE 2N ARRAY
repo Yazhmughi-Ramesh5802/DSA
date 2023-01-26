@@ -1,0 +1,24 @@
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        
+        
+        Arrays.sort(nums);
+        int count=1;
+        int element=nums[0];
+        int a=0;
+        int n = nums.length/2;
+        for(int i=1;i<nums.length;i++){
+            a = nums[i];
+            if(element==a){
+                count++;
+            }
+            else{
+                element=a;
+                count=1;
+            }
+            System.out.println(count);
+            if(count==n) return a;
+        }
+        return a;
+    }
+}
