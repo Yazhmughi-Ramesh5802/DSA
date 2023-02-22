@@ -1,0 +1,30 @@
+class Solution {
+    public String decodeMessage(String key, String message) {
+        HashMap<String,String> table = new HashMap<>();
+
+        System.out.println(key+" "+message);
+        int pos=0;
+        char i = 'a';
+        int k=0;
+        while(i<='z'){
+            String temp = Character.toString(key.charAt(k++));
+            if(!temp.equals(" ") && !table.containsKey(temp)){
+                table.put(temp,Character.toString(i));
+                i++;
+            }
+        }
+        String output="";
+        for(int j=0;j<message.length();j++){
+            String c = Character.toString(message.charAt(j));
+            if(c.equals(" ")) output+=" ";
+            else{
+                String val = table.get(c);
+                output+=val;
+            }
+        }
+
+        System.out.println(table);
+        String a="";
+        return output;
+    }
+}
