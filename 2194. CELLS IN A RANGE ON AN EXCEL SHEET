@@ -1,0 +1,24 @@
+class Solution {
+    public List<String> cellsInRange(String s) {
+        String[] num = s.split(":");
+        String first = num[0];
+        int start = Integer.parseInt(Character.toString(first.charAt(1)));
+        
+        String last = num[1];
+        int end = Integer.parseInt(Character.toString(last.charAt(1)));
+        List<String> ans = new ArrayList<>();
+        //System.out.println(first+" "+start+" "+last+" "+end);
+        
+        for(char j=first.charAt(0);j<=last.charAt(0);j++) {
+            String temp="";
+            
+            for(int k=start;k<=end;k++){
+                temp+=Character.toString(j);
+                temp+=Integer.toString(k);
+                ans.add(temp);
+                temp="";
+            }
+        }
+        return ans;
+    }
+}
