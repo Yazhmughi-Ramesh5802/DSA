@@ -1,0 +1,15 @@
+class Solution {
+    public String toLowerCase(String s) {
+        String ans="";
+        for(int i=0;i<s.length();i++){
+            int n = s.charAt(i);
+            if(n>=65 && n<=90){
+                ans+=Character.toString((char)(n+32));
+            }
+            else ans+=Character.toString(s.charAt(i));
+            
+        }
+        System.out.println(ans);
+        return ans;
+    }
+}
