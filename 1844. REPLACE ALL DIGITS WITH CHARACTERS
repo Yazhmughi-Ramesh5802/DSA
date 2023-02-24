@@ -1,0 +1,22 @@
+class Solution {
+    public String replaceDigits(String s) {
+        String nums = "1234567890";
+        String ans = "";
+        int n = 0;
+        for(int i=0;i<s.length();i++){
+            String a = Character.toString(s.charAt(i));
+            
+            if(nums.contains(a)){
+                int l =Integer.parseInt(a);
+                int ascii = l + n;
+                System.out.println(ascii);
+                ans+=Character.toString((char)ascii);
+            }
+            else {
+                ans+=a;
+                n=(int)(s.charAt(i));
+            }
+        }
+        return ans;
+    }
+}
