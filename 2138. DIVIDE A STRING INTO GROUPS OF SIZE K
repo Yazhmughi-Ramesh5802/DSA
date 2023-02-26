@@ -1,0 +1,19 @@
+class Solution {
+    public String[] divideString(String s, int k, char fill) {
+        int l = s.length();
+        int extra=0;
+        if(l%k==0){}
+        else{
+            while(s.length()%k!=0){
+                s+=Character.toString(fill);
+            }
+        }
+        System.out.println(s);
+        String[] ans = new String[s.length()/k];
+        int j=0;
+        for(int m=0;m<s.length()-k+1;m+=k){
+            ans[j++]=s.substring(m,m+k);
+        }
+        return ans;
+    }
+}
