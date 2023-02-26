@@ -1,0 +1,15 @@
+class Solution {
+    public boolean squareIsWhite(String coordinates) {
+        char letter = coordinates.charAt(0);
+        int n = Integer.parseInt(Character.toString(coordinates.charAt(1)));
+        int l = (int)letter - 96;
+        System.out.println(n+" "+l);
+        if(l%2==1 && n%2==1){
+            return false;
+        }
+        else if(l%2==0 && n%2==0){
+            return false;
+        }
+        else return true;
+    }
+}
