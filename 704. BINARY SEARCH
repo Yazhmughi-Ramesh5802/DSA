@@ -1,0 +1,21 @@
+class Solution {
+    public int binarySearch(int[] arr,int l,int r,int target){
+        int mid = l + (r-l) / 2;
+        while(l<=r){
+            if(arr[mid]==target){
+                return mid;
+            }
+            else if(arr[mid]>target){
+                return binarySearch(arr,l,mid-1,target);
+            }
+            else if(arr[mid]<target){
+               return binarySearch(arr,mid+1,r,target);
+            }
+        }
+        return -1;
+    }
+    public int search(int[] nums, int target) {
+        int ans = binarySearch(nums,0,nums.length-1,target);
+        return ans;
+    }
+}
