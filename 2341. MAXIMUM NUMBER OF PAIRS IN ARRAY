@@ -1,0 +1,25 @@
+class Solution {
+    public int[] numberOfPairs(int[] nums) {
+        HashMap<Integer,Integer> mp = new HashMap<>();
+        for(int i:nums){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+        }
+        int unique=0;
+        int pair=0;
+        System.out.println(mp);
+        for(int i : mp.keySet()){
+            int a = mp.get(i);
+            if(a%2==0){
+                pair+=a/2;
+            }
+            else if(a%2==1){
+                unique++;
+                pair+=a/2;
+            }
+        } System.out.println(pair+" "+unique);
+        int[] ans = new int[2];
+        ans[0]=pair;
+        ans[1]=unique;
+        return ans;
+    }
+}
