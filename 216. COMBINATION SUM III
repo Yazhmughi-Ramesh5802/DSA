@@ -1,0 +1,24 @@
+class Solution {
+    public void sub(int i,int k,int target,List<Integer> ds,List<List<Integer>> ans){
+        if(ds.size()==k){
+            if(target==0){
+                ans.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+        for(int j=i;j<=9;j++){
+            if(ds.size()==k || target==0) break;
+            if(j>target) break;
+            ds.add(j);
+            sub(j+1,k,target-j,ds,ans);
+            ds.remove(ds.size()-1);
+        }
+
+    }
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> ans = new ArrayList<>();
+        
+        sub(1,k,n,new ArrayList<>(),ans);
+        return ans;
+    }
+}
