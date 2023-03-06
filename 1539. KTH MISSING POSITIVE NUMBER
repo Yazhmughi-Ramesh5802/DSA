@@ -1,0 +1,30 @@
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+       int i = 0;
+       int count=0;
+       int num=1;
+       int miss=0;
+       while(count<k){
+            if(i<arr.length){
+               if(arr[i]!=num){
+                   miss=num;
+                   num++;
+                   count++;
+               }
+               else{
+                   i++;
+                   num++;
+               }
+            }
+            else{
+                miss=num;
+                count++;
+                num++;
+            }
+            
+
+       }
+       System.out.println(miss); 
+       return miss;
+    }
+}
