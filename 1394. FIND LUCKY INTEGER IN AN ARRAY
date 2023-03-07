@@ -1,0 +1,21 @@
+class Solution {
+    public int findLucky(int[] arr) {
+        HashMap <Integer,Integer> mp = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(!mp.containsKey(arr[i])){
+                mp.put(arr[i],1);
+            }
+            else{
+                int a = mp.get(arr[i]);
+                a+=1;
+                mp.put(arr[i],a);
+            }
+
+        }
+        int maxi=-1;
+        for(int i:mp.keySet()){
+            if(mp.get(i)==i) maxi=Math.max(maxi,i);
+        }
+        return maxi;
+    }
+}
