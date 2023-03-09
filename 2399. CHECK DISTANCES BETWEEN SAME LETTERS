@@ -1,0 +1,17 @@
+class Solution {
+    public boolean checkDistances(String s, int[] distance) {
+        int pos=0;
+        for(int i=0;i<s.length()-1;i++){
+            char c = s.charAt(i);
+            pos = (int)c - 97;
+            for(int j=i+1;j<s.length();j++){
+                char t = s.charAt(j);
+                if(c==t){
+                    int d = j-i-1;
+                    if(distance[pos]!=d) return false;
+                }
+            }
+        }
+        return true;
+    }
+}
