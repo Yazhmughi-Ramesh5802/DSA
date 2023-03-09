@@ -1,0 +1,30 @@
+class Solution {
+    public String[] uncommonFromSentences(String s1, String s2) {
+        String[] arr1 = s1.split(" ");
+        String[] arr2 = s2.split(" ");
+        ArrayList<String> ans = new ArrayList<>();
+        ArrayList<String> dup = new ArrayList<>();
+        ArrayList<String> w1 = new ArrayList<>();
+        ArrayList<String> w2 = new ArrayList<>();
+        for(int i=0;i<arr1.length;i++){
+            if(!w1.contains(arr1[i])) w1.add(arr1[i]);
+            else dup.add(arr1[i]);
+        }
+        for(int i=0;i<arr2.length;i++){
+            if(!w2.contains(arr2[i])) w2.add(arr2[i]);
+            else dup.add(arr2[i]);
+        }
+        for(int i=0;i<w1.size();i++){
+            if(!dup.contains(w1.get(i)) && !w2.contains(w1.get(i))) ans.add(w1.get(i));
+        }
+        for(int i=0;i<w2.size();i++){
+            if(!dup.contains(w2.get(i)) && !w1.contains(w2.get(i))) ans.add(w2.get(i));
+        }
+        System.out.println(ans);
+        String[] res = new String[ans.size()];
+        for(int i=0;i<ans.size();i++){
+            res[i]=ans.get(i);
+        }
+        return res;
+    }
+}
