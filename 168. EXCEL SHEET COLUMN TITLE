@@ -1,0 +1,20 @@
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        String alpha = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
+        String ans = "";
+
+        while(columnNumber>0){
+            columnNumber--;
+            int a = columnNumber%26;
+            
+            columnNumber/=26;
+            System.out.println(a+" "+columnNumber+" "+ans);
+            
+            char s = (char)(a+'A');
+            ans=Character.toString(s)+ans;
+        }
+        return ans;
+    }
+}
+
+
