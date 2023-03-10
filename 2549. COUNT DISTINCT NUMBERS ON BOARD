@@ -1,0 +1,26 @@
+class Solution {
+    public int distinctIntegers(int n) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(n);
+        int s = arr.size();
+        int temp=0;
+        int count=1;
+        while(s!=temp){
+            s=arr.size();
+            for(int i=0;i<arr.size();i++){
+                int a = arr.get(i);
+                for(int j=1;j<=a;j++){
+                    if(a%j==1 && !arr.contains(j)) {arr.add(j);count++;}
+                }
+            }
+            System.out.println(arr);
+            
+            
+            temp=arr.size();
+            if(s==temp) break;
+            
+
+        }
+        return count;
+    }
+}
