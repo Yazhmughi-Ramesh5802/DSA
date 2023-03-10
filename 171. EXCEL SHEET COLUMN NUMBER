@@ -1,0 +1,19 @@
+class Solution {
+    public int titleToNumber(String columnTitle) {
+        double ans = 0 ;
+        double temp = 0;
+        int i=columnTitle.length()-1;
+        int j=0;
+        while(i>=0){
+            double a = (double)(columnTitle.charAt(i))-64;
+            //System.out.println(a);
+            temp=Math.pow(26,j);
+            j++;
+            i--;
+            ans+=(a*temp);
+        }
+        System.out.println(ans);
+        return (int)ans;
+
+    }
+}
