@@ -1,0 +1,16 @@
+class Solution {
+    public int pivotInteger(int n) {
+        int left=0;
+        int right=0;
+        int sum = (n*(n+1))/2;
+        System.out.println(sum);
+        for(int i=1;i<=n;i++){
+            int j = i-1;
+            left = (j*(j+1))/2;
+            right = sum-left-i;
+            System.out.println(left+" "+right);
+            if(left==right) return i;
+        }
+        return -1;
+    }
+}
