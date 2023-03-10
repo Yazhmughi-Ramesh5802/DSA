@@ -1,0 +1,34 @@
+class Solution {
+    public int sum(ArrayList<Integer> arr){
+        int ans=0;
+        for(int i=0;i<arr.size();i++){
+            ans = ans ^ arr.get(i);
+        }
+        
+        return ans;
+        //System.out.println(sum);
+    }
+    public void sub(int[] nums,int i,ArrayList<Integer> ds,int sum,ArrayList<Integer> ans){
+        if(i==nums.length){
+            //System.out.println(ds);
+            sum+=sum(ds);
+            ans.add(sum);
+            //System.out.println(ans);
+            return;
+        }
+        ds.add(nums[i]);
+        sub(nums,i+1,ds,sum,ans);
+        ds.remove(ds.size()-1);
+        sub(nums,i+1,ds,sum,ans);
+        
+    }
+    public int subsetXORSum(int[] nums) {
+        ArrayList <Integer> ans = new ArrayList<>();
+        int res = 0;
+        sub(nums,0,new ArrayList<>(),res,ans);
+        for(int i=0;i<ans.size();i++){
+            res+=ans.get(i);
+        }
+        return res;
+    }
+}
