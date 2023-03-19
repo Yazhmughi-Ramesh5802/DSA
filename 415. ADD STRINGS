@@ -1,0 +1,28 @@
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int l1 = num1.length()-1;
+        int l2 = num2.length()-1;
+        int d = Math.abs(l1-l2);
+        if(l1<l2){
+            for(int i=0;i<d;i++) num1 = "0"+num1;
+            l1+=d;
+        }
+        else if(l1>l2){
+            for(int i=0;i<d;i++) num2 = "0"+num2;
+            l2+=d;
+        }
+        int carry = 0;
+        String ans="";
+        while(l1>=0 && l2>=0){
+            int s1 = Integer.parseInt(Character.toString(num1.charAt(l1--)));
+            int s2 = Integer.parseInt(Character.toString(num2.charAt(l2--)));
+            int sum = s1+s2+carry;
+            int n = sum%10;
+            carry = sum/10;
+            ans = Integer.toString(n)+ans;
+        }
+        if(carry!=0) ans = Integer.toString(carry)+ans;
+        System.out.println(num1+" "+num2);
+        return ans;
+    }
+}
