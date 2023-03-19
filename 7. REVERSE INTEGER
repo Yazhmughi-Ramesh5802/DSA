@@ -1,0 +1,42 @@
+class Solution {
+    public int reverse(int x) {
+        // FIRST WE REVERSE THE INTEGER
+        int flag=0;
+        long ans=0;
+        if(x<0) flag=1;
+        // x = 321 
+        // 321 % 10 = 1 
+        // d = 1
+        // ans = 1
+        //       1 * 10 = 10
+        //     x = 32
+        // d = 2 
+        // ans = 10 + 2 = 12
+        //     12 * 10 = 120
+        //     x = 3
+        // d = 3
+        // ans = 120 + 3 = 123
+        //       123 * 10 = 1230
+        //     x = 0 loop terminated
+        // ans = ans / 10 (1230/10 = 123)
+        // and reversed
+        while(x!=0){
+            int d = x%10;
+            ans+=d;
+            ans=ans*10;
+            x=x/10;
+        }
+        System.out.println(x);
+        ans=ans/10;
+
+        // WHY IS THIS LINE NOT GETTING EXECUTED 
+        if(x<0) ans = ans * -1;
+        System.out.println(ans);
+        if(ans<Integer.MIN_VALUE || ans>Integer.MAX_VALUE) return 0;
+        else {
+            return (int)ans;
+
+        }
+
+    }
+}
