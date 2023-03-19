@@ -1,0 +1,37 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int carry = 1;
+        String ans = "";
+        
+        //  c =     1 
+        //  1 2 3 4 9 // 1+9 = 10 sum = 10 ; n = 0 ; c = 1 ;
+        //  ----------
+        //          0
+        //  c =   1 
+        //  ----------
+        //        5   // sum = 5 ; n = 5 ; c = 0
+              
+
+                        
+
+        for(int i=digits.length-1;i>=0;i--){
+            int a = digits[i];
+            int sum = a + carry;
+            int n = sum%10;
+            
+            ans = Integer.toString(n)+ans;
+            carry = sum/10;
+            
+            
+        }
+        if(carry!=0) ans = Integer.toString(carry) + ans;
+        System.out.println(ans);
+        int[] res = new int[ans.length()];
+        for(int i=0;i<ans.length();i++){
+            res[i]=Integer.parseInt(Character.toString(ans.charAt(i)));
+        }
+        return res;
+
+
+    }
+}
