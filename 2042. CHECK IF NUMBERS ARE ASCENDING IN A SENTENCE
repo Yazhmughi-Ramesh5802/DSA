@@ -1,0 +1,23 @@
+class Solution {
+    public boolean areNumbersAscending(String s) {
+        String[] arr = s.split(" ");
+        String nums = "0123456789";
+        int prev = -1;
+        int curr = 0;
+        boolean numeric = true;
+        for(int i=0;i<arr.length;i++){
+            // I HAVE USED REGULAR EXPRESSION TO CHECK IF THE STRING IS A NUMBER
+            numeric = arr[i].matches("-?\\d+(\\.\\d+)?");
+            if(numeric){
+                
+                curr = Integer.parseInt(arr[i]);
+                if(prev<curr){
+                    System.out.print(arr[i]+" ");
+                    prev = curr;
+                }
+                else return false;
+            }
+        }
+        return true;
+    }
+}
