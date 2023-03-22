@@ -1,0 +1,21 @@
+class Solution {
+    public int vowelStrings(String[] words, int left, int right) {
+        String a = "";
+        String b = "";
+        int count=0;
+        String vow = "aeiouAEIOU";
+        for(int i=0;i<words.length;i++){
+            a=Character.toString(words[i].charAt(0));
+            b=Character.toString(words[i].charAt(words[i].length()-1));
+            //System.out.println(a+" "+b);
+            if(vow.contains(a) && vow.contains(b)){
+                
+                if(left<=i && i<=right){
+                    
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
