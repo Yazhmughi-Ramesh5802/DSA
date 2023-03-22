@@ -1,0 +1,15 @@
+class Solution {
+    public boolean checkString(String s) {
+        int check_flag=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='b'){
+                check_flag=1;
+
+            }
+            if(check_flag==1 && s.charAt(i)=='a'){
+                return false;
+            }
+        }
+        return true;
+    }
+}
