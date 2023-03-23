@@ -1,0 +1,18 @@
+class Solution {
+    public int bitwiseComplement(int n) {
+        int number = 0;
+        if(n==0) return 1;
+        int i=0;
+        while(n!=0){
+            double d = n%2;
+            if(d==0) {
+                number+=(1*Math.pow(2,i));
+            }
+            else number+=0;
+            i++;
+            n=n/2;
+
+        }
+        return number;
+    }
+}
