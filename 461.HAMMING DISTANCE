@@ -1,0 +1,16 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        int count=0;
+        int n = x^y;
+        while(n!=0){
+            if(n%2==1) count++;
+            n=n/2;
+        }
+        
+        return count;
+    }
+}
+// 0 0 0 1
+// 0 1 0 0  perform(xor)
+// ---------
+// 0 1 0 1  (2 ones); 
