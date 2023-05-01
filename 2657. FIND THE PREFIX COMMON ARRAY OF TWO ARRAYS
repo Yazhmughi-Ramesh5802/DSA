@@ -1,0 +1,22 @@
+class Solution {
+    public int[] findThePrefixCommonArray(int[] A, int[] B) {
+//         Iterate A[i] and B[i],
+//         and record if we have ever seen A[i] and B[i].
+
+//         The second time we have seen the same value,
+//         we will increment the number cur of current common elements.
+
+//         Finall return the result.
+            
+        int[] seen = new int[A.length+1];
+        int[] ans = new int[A.length];
+        int cur=0;
+        for(int i=0;i<A.length;i++){
+          
+            if(++seen[A[i]]==2) cur++;
+            if(++seen[B[i]]==2) cur++;
+            ans[i]=cur;
+        }
+        return ans;
+    }
+}
