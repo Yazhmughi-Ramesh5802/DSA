@@ -1,0 +1,29 @@
+class Solution {
+    public boolean check(String main,String s){
+        HashMap<Character,Integer> hm = new HashMap<>();
+        Set<Character> set = new HashSet<>();
+        for(int i=0;i<main.length();i++){
+            hm.put(main.charAt(i),hm.getOrDefault(main.charAt(i),0)+1);
+
+        }
+        System.out.print(hm+" ");
+        int sum=0;
+        for(int j=0;j<s.length();j++){
+            if(hm.containsKey(s.charAt(j))){
+                sum+=hm.get(s.charAt(j));
+            }
+        }
+        System.out.println(sum+" "+s.length()+" "+s);
+        if(sum==s.length()) return true;
+        else return false;
+        
+
+    }
+    public int countConsistentStrings(String allowed, String[] words) {
+        int count=0;
+        for(int i=0;i<words.length;i++){
+            if(check(allowed,words[i])) count++;
+        }
+        return count;
+    }
+}
