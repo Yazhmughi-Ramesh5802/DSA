@@ -1,0 +1,22 @@
+class Solution {
+    public int[] rowAndMaximumOnes(int[][] mat) {
+        int[] ans = new int[2];
+        int count=0;
+        int maxi=0;
+        int mini=0;
+        for(int i=0;i<mat.length;i++){
+            count=0;
+            for(int j=0;j<mat[0].length;j++){
+                if(mat[i][j]==1) count++;
+            }
+            if(count>maxi){
+                maxi=count;
+                mini=i;
+                
+            }
+        }
+        ans[0]=mini;
+        ans[1]=maxi;
+        return ans;
+    }
+}
