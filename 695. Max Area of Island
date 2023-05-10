@@ -1,0 +1,52 @@
+class Pair{
+    int first,second;
+    Pair(int f,int s){
+        first = f;
+        second = s;
+    }
+}
+class Solution {
+    public int bfs(int[][] grid,int[][] visited,int f,int s){
+        int m = grid.length;
+        int n = grid[0].length;
+        visited[f][s] = 1;
+        Queue <Pair> q = new LinkedList<>();
+        Pair p = new Pair(f,s);
+        q.add(p);
+
+        int cnt=1;
+        while(!q.isEmpty()){
+            int row = q.peek().first;
+            int col = q.peek().second;
+            q.remove();
+
+            int[] rows = {-1,1,0,0};
+            int[] cols = {0,0,-1,1};
+
+            for(int i=0;i<4;i++){
+                int nRow = rows[i]+row;
+                int nCol = cols[i]+col;
+                if(nRow>=0 && nRow<m && nCol>=0 && nCol<n && grid[nRow][nCol]==1 && visited[nRow][nCol]==0){
+                    visited[nRow][nCol]=1;
+                    Pair temp = new Pair(nRow,nCol);
+                    q.add(temp);
+                    cnt++;
+                }
+            }
+            
+        }
+        return cnt;
+    }
+    public int maxAreaOfIsland(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] visited = new int[m][n];
+        int maxi=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(visited[i][j]==0 && grid[i][j]==1) maxi = Math.max(maxi,bfs(grid,visited,i,j));
+            }
+        }
+        return maxi;
+    }
+}
