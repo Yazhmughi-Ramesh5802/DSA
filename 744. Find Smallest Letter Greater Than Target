@@ -1,0 +1,13 @@
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        Arrays.sort(letters);
+        char ans=letters[0];
+        for(int i=0;i<letters.length;i++){
+            if((int)target<(int)letters[i]) {
+                ans = letters[i];
+                break;
+            }
+        }
+        return ans;
+    }
+}
