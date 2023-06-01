@@ -1,0 +1,22 @@
+class Solution {
+    public int specialArray(int[] nums) {
+        int n=1;
+        int j=0;
+        int count=0;
+        Arrays.sort(nums);
+        int maxi=nums[nums.length-1];
+        while(j<maxi){
+            count=0;
+            for(int i=0;i<nums.length;i++){
+                if(nums[i]>=n) count++;
+            }
+            System.out.println(count+" "+n);
+            if(count==n) return n;
+            n++;
+            j++;
+            
+        }
+        return -1;
+
+    }
+}
