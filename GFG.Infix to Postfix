@@ -1,0 +1,59 @@
+//{ Driver Code Starts
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine().trim());
+        while (t-- > 0) {
+            System.out.println(
+                new Solution().infixToPostfix(br.readLine().trim()));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution {
+    public static int prec(String a){
+        if(a.equals("^")) return 3;
+        else if(a.equals("/") || a.equals("*")) return 2;
+        else if(a.equals("+") || a.equals("-")) return 1;
+        else return 0;
+    }
+    // Function to convert an infix expression to a postfix expression.
+    public static String infixToPostfix(String exp) {
+        Stack<String> st = new Stack<>();
+        String ans = "";
+        for(int i=0;i<exp.length();i++){
+            String temp = Character.toString(exp.charAt(i));
+            if(temp.equals("(")){
+                st.push(temp);
+            }
+            else if(temp.equals(")")){
+                while(!st.isEmpty() && !st.peek().equals("(")){
+                    System.out.print(st.pop());
+                }
+                st.pop();
+            }
+            else if(temp.equals("+") || temp.equals("/") || temp.equals("-") || temp.equals("*") || temp.equals("^")){
+                while(!st.isEmpty() && prec(temp)<=prec(st.peek())){
+                    System.out.print(st.pop());
+                }
+                st.push(temp);
+            }
+            else{
+                System.out.print(temp);
+            }
+            
+        }
+        while(!st.isEmpty()){
+            System.out.print(st.pop());
+        }
+        return ans;
+    }
+}
