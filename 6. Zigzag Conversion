@@ -1,0 +1,37 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if(numRows==1) return s;
+        ArrayList<ArrayList<String>> arr = new ArrayList<>();
+        for(int i=0;i<numRows;i++) arr.add(new ArrayList<String>());
+        int i=0;
+        int l=0;
+        if(numRows == s.length()) return s;
+        if(numRows==1) return s;
+        while(i<s.length()){
+            if(l==numRows-1){
+                for(int j=numRows-1;j>0;j--){
+                    if(i>=s.length()) break;
+                    arr.get(j).add(Character.toString(s.charAt(i)));
+                    i++;
+                    l--;
+                }
+            }
+            else{
+                for(int j=0;j<numRows-1;j++){
+                    if(i>=s.length()) break;
+                    arr.get(j).add(Character.toString(s.charAt(i)));
+                    i++;
+                    l++;
+                }
+            }
+            
+            
+        }
+        String ans="";
+        for(int m=0;m<numRows;m++){
+            for(int n=0;n<arr.get(m).size();n++) ans+=arr.get(m).get(n);
+        }
+        System.out.println(arr);
+        return ans;
+    }
+}
