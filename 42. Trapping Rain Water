@@ -1,0 +1,28 @@
+class Solution {
+    public int trap(int[] height) {
+        int water = 0;
+        int[] prefix = new int[height.length];
+        int[] suffix = new int[height.length];
+        int maxi = 0;
+        for(int i=0;i<height.length;i++){
+            
+            maxi=Math.max(maxi,height[i]);
+            prefix[i]=maxi;
+            System.out.print(prefix[i]+" ");
+        }
+        System.out.println();
+        maxi=0;
+        for(int i=height.length-1;i>=0;i--){
+            maxi=Math.max(maxi,height[i]);
+            suffix[i]=maxi;
+            System.out.print(suffix[i]+" ");
+        }
+        for(int i=0;i<height.length;i++){
+            int mini = Math.min(prefix[i],suffix[i]);
+            water+=(mini-height[i]);
+        }
+        
+        
+        return water;
+    }
+}
