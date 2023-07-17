@@ -1,0 +1,26 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int dp(int[] height,int ind,int[] dpArray){
+        if(ind==0) return 0;
+        int one=0;
+        int two = Integer.MAX_VALUE;
+        if(dpArray[ind]!=-1) return dpArray[ind];
+        
+        one = (dp(height,ind-1,dpArray)+Math.abs(height[ind]-height[ind-1]));
+        if(ind-2>=0){
+            two = (dp(height,ind-2,dpArray)+Math.abs(height[ind]-height[ind-2]));
+        }
+
+        return dpArray[ind] = Math.min(one,two);
+
+    }
+    public static int frogJump(int n, int heights[]) {
+
+        int[] dpArray = new int[n];
+        for(int i=0;i<n;i++) dpArray[i]=-1;
+        return dp(heights, n-1, dpArray);
+        
+    }
+
+}
