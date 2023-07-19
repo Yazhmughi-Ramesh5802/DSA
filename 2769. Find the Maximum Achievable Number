@@ -1,0 +1,6 @@
+class Solution {
+    public int theMaximumAchievableX(int num, int t) {
+        return num+(2*t);
+        // bcoz increasing of the number gives high value . here we increase 2*t times as x decreases and num increases so it is taken as 2*t times.
+    }
+}
