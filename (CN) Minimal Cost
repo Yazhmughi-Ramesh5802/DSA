@@ -1,0 +1,27 @@
+import java.util.Arrays;
+
+public class Solution {
+
+    public static int dp(int ind,int k,int[] height,int[] dpArray){
+        if(ind==0) return 0;
+        int mini = Integer.MAX_VALUE;
+        int jump = 0;
+        if(dpArray[ind]!=-1) return dpArray[ind];
+        for(int i=1;i<=k;i++){
+            if(ind-i>=0){
+                jump = dp(ind-i,k,height,dpArray) + Math.abs(height[ind]-height[ind-i]);
+                
+            }
+            mini = Math.min(jump,mini);
+            
+        }
+        return dpArray[ind] = mini;
+    }
+    public static int minimizeCost(int n, int k, int []height){
+        int[] dpArray = new int[n+1];
+        Arrays.fill(dpArray,-1);
+        return dp(n-1,k,height,dpArray);
+        
+    }
+}
+       
