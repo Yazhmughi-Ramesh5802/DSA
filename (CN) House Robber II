@@ -1,0 +1,37 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static long dp(int ind,ArrayList<Long> arr,long[] dpArray){
+		if(ind==0) return arr.get(0);
+		else if(ind<0) return 0;
+
+		if(dpArray[ind]!=-1) return dpArray[ind];
+
+		long pick = arr.get(ind) + dp(ind-2,arr,dpArray);
+		long drop = 0 + dp(ind-1,arr,dpArray);
+
+		return dpArray[ind] = Math.max(pick,drop);
+	}
+
+	public static long houseRobber(int[] valueInHouse) {
+		int n = valueInHouse.length;
+
+		if(n==1) return valueInHouse[0];
+		ArrayList<Long> arr1 = new ArrayList<>();
+		ArrayList<Long> arr2 = new ArrayList<>();
+
+		long[] dpArray = new long[n+1];
+		for(int i=0;i<n+1;i++) dpArray[i] = -1;
+
+		for(int i=0;i<n;i++){
+			if(i!=0) arr1.add((long)valueInHouse[i]);
+			if(i!=n-1) arr2.add((long)valueInHouse[i]);
+		}		
+		//System.out.println(arr1+" "+arr2);
+		long ans1 = dp(arr1.size()-1,arr1,dpArray);
+		for(int i=0;i<n+1;i++) dpArray[i] = -1;
+		long ans2 = dp(arr2.size()-1,arr2,dpArray);
+
+		return Math.max(ans1,ans2);
+	}	
+}
