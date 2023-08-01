@@ -1,0 +1,50 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+
+    public static int func(int i,int j,int[][] grid,int[][] dp){
+        if(i==0 && j==0) return grid[0][0];
+        if(i<0 || j<0) return (int)Math.pow(10,9);
+        
+
+        if(dp[i][j]!=-1) return dp[i][j];
+        int up = grid[i][j] + func(i-1,j,grid,dp);
+        int left = grid[i][j] + func(i,j-1,grid,dp);
+
+        return dp[i][j] = Math.min(up,left);
+    }
+    public static int minSumPath(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        //int[][] dp = new int[m][n];
+
+        // for(int[] row : dp){
+        //     Arrays.fill(row,-1);
+        // }
+        // return func(m-1,n-1,grid,dp);
+
+
+        int[][] dpArray = new int[m][n];
+
+        for(int i=0;i<m;i++){
+          for(int j=0;j<n;j++){
+            int up = (int)Math.pow(10,9);
+            int left = (int)Math.pow(10,9);
+            if(i==0 && j==0){
+              dpArray[i][j] = grid[i][j];
+              continue;
+            }
+            up = grid[i][j];
+            left = grid[i][j];
+            if(i>0) up+=dpArray[i-1][j];
+            else up+=(int)Math.pow(10,9);
+            if(j>0) left+=dpArray[i][j-1];
+            else left+=(int)Math.pow(10,9);
+
+            dpArray[i][j] = Math.min(up,left);
+
+          }
+        }
+        return dpArray[m-1][n-1];
+    }
+}
