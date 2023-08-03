@@ -1,0 +1,49 @@
+class Solution {
+    public static int func(int i,int last,int[][] matrix,int[][] dp,int n){
+        int mini = Integer.MAX_VALUE;
+        if(i==0){
+            for(int k=0;k<n;k++){
+                if(k!=last){
+                    mini = Math.min(mini,matrix[i][k]);
+                }
+            }
+            return mini;
+        }
+        if(dp[i][last]!=-1) return dp[i][last];
+        for(int k=0;k<n;k++){
+            if(k!=last){
+                int score = matrix[i][k] + func(i-1,k,matrix,dp,n);
+                mini = Math.min(score,mini);
+            }
+             
+        }
+        return dp[i][last] = mini; 
+    }
+    public int minFallingPathSum(int[][] grid) {
+        int m = grid.length;
+        int[][] dp = new int[m][m+1];
+        for(int[] row : dp) Arrays.fill(row,-1);
+        if(m==1) return grid[0][0];
+        // for(int i=0;i<=m;i++){
+        
+        // }
+        // dp[0][0] = Math.min(grid[0][1],grid[0][2]);
+        // dp[0][1] = Math.min(grid[0][0],grid[0][2]);
+        // dp[0][2] = Math.min(grid[0][0],grid[0][1]);
+        // dp[0][3] = Math.min(grid[0][0],Math.min(grid[0][1],grid[0][2]));
+
+        // for(int day=1;day<m;day++){
+        //     for(int last=0;last<=m;last++){
+        //         dp[day][last] = Integer.MAX_VALUE;
+        //         for(int task=0;task<m;task++){
+        //             if(last!=task){
+        //                 int score = grid[day][task] + dp[day-1][task];
+        //                 dp[day][last] = Math.min(dp[day][last],score);
+        //             }
+        //         }
+        //     }
+        // }
+        // return dp[m-1][m];
+        return func(m-1,m,grid,dp,m);
+    }
+}
