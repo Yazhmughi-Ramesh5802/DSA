@@ -1,0 +1,23 @@
+
+import java.util.*;
+public class Solution {
+	public static long func(int ind,int[] denominations,int value,long[][] dp){
+		if(ind==0){
+			if(value % denominations[0]==0) return 1;
+			else return 0;
+		}
+		if(dp[ind][value] != -1) return dp[ind][value];
+		long dontTake = func(ind-1,denominations,value,dp);
+		long take = 0;
+		if(denominations[ind]<=value) take = func(ind,denominations,value-denominations[ind],dp);
+		return dp[ind][value] = dontTake + take;
+
+	}
+	public static long countWaysToMakeChange(int denominations[], int value){
+		long[][] dp = new long[denominations.length][value+1];
+		for(long[] row : dp) Arrays.fill(row,-1);
+    	return func(denominations.length-1,denominations,value,dp);
+
+	}
+	
+}
