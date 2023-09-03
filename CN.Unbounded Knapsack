@@ -1,0 +1,20 @@
+import java.util.*;
+public class Solution {
+
+    public static int func(int ind,int wt,int[] profit,int[] weight,int[][] dp){
+       if(ind == 0){
+           return profit[ind] * (int)(wt/weight[ind]);
+       }
+       if(dp[ind][wt]!=-1) return dp[ind][wt];
+       int dontTake = 0 + func(ind-1,wt,profit,weight,dp);
+       int take = 0;
+       if(weight[ind]<=wt) take = profit[ind] + func(ind,wt-weight[ind],profit,weight,dp);
+       return dp[ind][wt] = Math.max(dontTake,take);
+
+    }
+    public static int unboundedKnapsack(int n, int w, int[] profit, int[] weight) {
+        int[][] dp = new int[n][w+1];
+        for(int[] row : dp) Arrays.fill(row,-1);
+        return func(n-1,w,profit,weight,dp);
+    }
+}
