@@ -1,0 +1,44 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static String shortestSupersequence(String a, String b) {
+        int m = a.length();
+        int n = b.length();
+
+        int[][] dp = new int[m+1][n+1];
+        for(int i=0;i<=m;i++) dp[i][0] = 0;
+        for(int i=0;i<=n;i++) dp[0][i] = 0;
+
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                if(a.charAt(i-1) == b.charAt(j-1)) dp[i][j] = 1 + dp[i-1][j-1];
+                else dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+        String ans = "";
+        while(m>0 && n>0){
+            if(a.charAt(m-1) == b.charAt(n-1)) {
+                ans+=Character.toString(a.charAt(m-1));
+                m--;
+                n--;
+            }
+            else if(dp[m-1][n] > dp[m][n-1]){
+                ans+=Character.toString(a.charAt(m-1));
+                m--;
+            }
+            else {
+                ans+=Character.toString(b.charAt(n-1));;
+                n--;
+            }
+        }
+
+        while(m>0) {ans+=Character.toString(a.charAt(m-1)); m--;}
+        while(n>0) {ans+=Character.toString(b.charAt(n-1)); n--;}
+
+        String finalAns = "";
+        for(int k=ans.length()-1;k>=0;k--) finalAns+=Character.toString(ans.charAt(k));
+        //System.out.println(finalAns);
+        return finalAns;
+    }
+
+}
