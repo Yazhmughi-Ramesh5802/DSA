@@ -1,0 +1,41 @@
+import java.util.*;
+public class Solution {
+    public static int func(int i,int buy,int[] prices,int fee,int n,int[][] dp){
+        if(i==n) return 0;
+
+        int profit = 0;
+        if(dp[i][buy] != -1) return dp[i][buy];
+        if(buy == 0){
+            int take = -prices[i] + func(i+1,1,prices,fee,n,dp);
+            int dontTake = 0 + func(i+1,0,prices,fee,n,dp);
+            return profit = dp[i][buy] = Math.max(take,dontTake);
+        }
+        else{
+            int sell = prices[i] - fee + func(i+1,0,prices,fee,n,dp);
+            int dontSell = 0 + func(i+1,1,prices,fee,n,dp);
+            return profit = dp[i][buy] = Math.max(sell,dontSell);
+        }
+    }
+    public static int maximumProfit(int[] prices, int n, int fee) {
+        // int[][] dp = new int[n][2];
+        // for(int[] row : dp) Arrays.fill(row,-1);
+        // return func(0,0,prices,fee,n,dp);
+        
+        int[][] dp = new int[n+1][2];
+        for(int i=n-1;i>=0;i--){
+            for(int buy = 0;buy<=1;buy++){
+                if(buy == 0){
+                    int take = -prices[i] + dp[i+1][1];
+                    int dontTake = 0 + dp[i+1][0];
+                    dp[i][buy] = Math.max(take,dontTake);
+                }
+                else{
+                    int sell = prices[i] - fee + dp[i+1][0];
+                    int dontSell = 0 + dp[i+1][1];
+                    dp[i][buy] = Math.max(sell,dontSell);
+                }
+            }
+        }
+        return dp[0][0];
+    }
+}
