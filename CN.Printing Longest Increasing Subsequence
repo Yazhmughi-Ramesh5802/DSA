@@ -1,0 +1,64 @@
+import java.util.*;
+public class Solution {
+    public static List< Integer > printingLongestIncreasingSubsequence(int []nums, int x) {
+        
+        int[] dp = new int[x];
+        int[] loc = new int[x];
+        Arrays.fill(dp,1);
+
+        int maxi = 1;
+        int pos = 0;
+//  5 4 11 1 16
+//  0 1  0 3 2  
+ 
+//  1 1  1  1 1
+//  1 1  2  1 3
+        
+        
+        for(int i=0;i<x;i++){
+            loc[i] = i;
+            
+            for(int prev=0;prev<i;prev++){
+                if(nums[i]>nums[prev]){
+                    if(dp[prev]+1>dp[i]){
+                        dp[i]=dp[prev]+1;
+                        loc[i] = prev;
+                    }
+                    
+                }
+            }
+            if(dp[i]>maxi){
+                maxi = dp[i];
+                pos = i;
+            }
+        }
+        int last = -1;
+        int temp = -1;
+        for(int i=0;i<x;i++){
+            if(dp[i]>temp){
+                temp = dp[i];
+                last = i;
+            }
+        }
+        //System.out.println(pos);
+        List <Integer> arr = new ArrayList<Integer>();
+        while(loc[last]!=last){
+            arr.add(nums[last]);
+            last = loc[last];
+        }
+        arr.add(nums[0]);
+        // for(int i=0;i<x;i++){
+        //     System.out.println(loc[i]);
+        // }
+        for(int i=0;i<arr.size()/2;i++){
+            int a = arr.get(i);
+            int b = arr.get(arr.size()-i-1);
+            arr.set(arr.size()-i-1,a);
+            arr.set(i,b);
+            
+        }
+        //System.out.println(arr);
+        return arr;
+        
+    }
+}
