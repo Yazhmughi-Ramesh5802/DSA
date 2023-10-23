@@ -1,0 +1,38 @@
+import java.util.*;
+public class Solution {
+    public static List< Integer > divisibleSet(int []arr) {
+        Arrays.sort(arr);
+        List<Integer> answer = new ArrayList<>();
+        int n = arr.length;
+        int[] dp = new int[n];
+        int[] hash = new int[n];
+        Arrays.fill(dp,1);
+        int maxi=0;
+        for(int i=0;i<n;i++){
+            hash[i] = i;
+            for(int prev=0;prev<i;prev++){
+                if(arr[i]%arr[prev]==0 && dp[prev]+1>dp[i]){
+                    dp[i] = dp[prev]+1;
+                    hash[i] = prev;
+                }
+            }
+            maxi = Math.max(dp[i],maxi);
+        }
+        int ans = -1;
+        int lastInd = -1;
+        for(int i=0;i<n;i++){
+            if(dp[i] > ans){
+                ans = dp[i];
+                lastInd = i;
+            }
+        }
+        answer.add(arr[lastInd]);
+        while(hash[lastInd] != lastInd){
+            lastInd = hash[lastInd];
+            answer.add(arr[lastInd]);
+        }
+        Collections.reverse(answer);
+        return answer;
+
+    }
+}
