@@ -1,0 +1,28 @@
+import java.util.*;
+public class Solution {
+	public static int func(int[] p,int i,int j,int[][] dp){
+		if(i==j) return 0;
+
+		if(dp[i][j] != -1) return dp[i][j];
+		int mini = Integer.MAX_VALUE;
+		for(int k=i;k<j;k++){
+			int val = func(p,i,k,dp) + func(p,k+1,j,dp)+ (p[i-1]*p[k]*p[j]);
+			mini = Math.min(mini,val);
+		}
+		return dp[i][j] = mini;
+	}
+
+	
+	public static int mcm(int[] p){
+		int n = p.length;
+		int[][] dp = new int[n][n];
+
+		for(int[] row : dp) Arrays.fill(row,-1);
+		
+		return func(p,1,p.length-1,dp);
+
+	}
+
+
+	
+}
