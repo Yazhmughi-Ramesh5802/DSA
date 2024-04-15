@@ -1,0 +1,37 @@
+class Solution {
+    public boolean checkRecord(String s) {
+        int abs = 0;
+        int pres = 0;
+        int late = 0;
+        int lateCons=0;
+        int temp = 0;
+
+        for(int i=0;i<s.length();i++){
+            char a = s.charAt(i);
+            if(a == 'A') abs++;
+            else if(a == 'P') pres++;
+            else {
+                late++;
+                temp = 0;
+                int j = i;
+                while(j<s.length()){
+                    if(s.charAt(j)=='L') {
+                        temp++;
+                        System.out.println(j + "*");
+                        j++;
+                    }
+                    else break;
+                }
+                lateCons = Math.max(temp,lateCons);
+                System.out.println(temp);
+
+            }
+
+           
+        }
+        System.out.println(lateCons);
+        if(abs<2 && lateCons<3) return true;
+        else return false;
+
+    }
+}
