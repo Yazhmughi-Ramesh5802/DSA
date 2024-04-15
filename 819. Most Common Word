@@ -1,0 +1,60 @@
+class Solution {
+    public List<String> seperate(String a){
+        List<String> words = new ArrayList<>();
+        
+        String alpha = "abcdefghijklmnopqrstuvwxyzABCEFGHIJKLMNOPQRSTUVWXYZ";
+        
+        String temp = "";
+        for(int i=0;i<a.length();i++){
+            char t = a.charAt(i);
+            //System.out.println(t+" ");
+           
+
+            if(!alpha.contains(Character.toString(t))){
+                temp = temp.toLowerCase();
+                if(temp!="") words.add(temp);
+                temp="";
+            }
+            else{
+                temp+=Character.toString(t);
+            }
+        }
+
+        
+
+        System.out.println(words);
+        return words;
+    }
+    public String mostCommonWord(String paragraph, String[] banned) {
+        paragraph += " ";
+        List<String> words = seperate(paragraph);
+        
+        Map <String,Integer> mp = new HashMap<>();
+
+        for(int i=0;i<words.size();i++){
+            String a = words.get(i);
+            if(mp.containsKey(a)){
+                int val = mp.get(a);
+                mp.put(a,val+1);
+            }
+            else{
+                mp.put(a,1);
+            }
+        }
+        for(int i=0;i<banned.length;i++){
+            if(mp.containsKey(banned[i])){
+                mp.remove(banned[i]);
+            }
+        }
+        int maxi = 0;
+        String maxWord = "";
+        System.out.println(mp);
+        for(String a : mp.keySet()){
+            if(mp.get(a) > maxi){
+                maxi = mp.get(a);
+                maxWord = a;
+            }
+        }
+        return maxWord;
+    }
+}
