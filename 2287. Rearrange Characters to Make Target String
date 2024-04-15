@@ -1,0 +1,40 @@
+class Solution {
+    public int rearrangeCharacters(String s, String target) {
+        Map<Character,Integer> mp = new HashMap<>();
+
+        for(int i=0;i<s.length();i++){
+            char a = s.charAt(i);
+            if(mp.containsKey(a)){
+                int val  = mp.get(a);
+                mp.put(a,val+1);
+            }
+            else mp.put(a,1);
+        }
+        int flag = 0;
+        int times = 0;
+        while(true){
+            flag = 0;
+            for(int i=0;i<target.length();i++){
+                char t = target.charAt(i);
+                if(mp.containsKey(t)){
+                    int n = mp.get(t);
+                    if(n==0){
+                        flag = 1;
+                        break;
+                    }
+                    else{
+                        mp.put(t,n-1);
+                    }
+                }
+                else{
+                    flag = 1;
+                    break;
+                }
+                
+            }
+            if(flag == 0) times++;
+            else break;
+        }
+        return times;
+    }
+}
