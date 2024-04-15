@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isSubstringPresent(String s) {
+        String rev = "";
+        for(int i=s.length()-1;i>=0;i--){
+            rev+=Character.toString(s.charAt(i));
+        }
+        Map <String,Integer> mp = new HashMap<>();
+        for(int i=0;i<s.length()-1;i++){
+            String one = Character.toString(s.charAt(i)) + Character.toString(s.charAt(i+1));
+            String two = Character.toString(rev.charAt(i)) + Character.toString(rev.charAt(i+1)); 
+
+            if(mp.containsKey(one)){
+                int val = mp.get(one);
+                mp.put(one,val+1);
+            }
+            else mp.put(one,1);
+            if(mp.containsKey(two)){
+                int val = mp.get(two);
+                mp.put(two,val+1);
+            }
+            else mp.put(two,1);
+
+
+
+        }
+        for(String a : mp.keySet()){
+            if(mp.get(a)>=2) return true;
+        }
+        
+        return false;
+    }
+}
