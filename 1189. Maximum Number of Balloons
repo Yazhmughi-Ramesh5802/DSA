@@ -1,0 +1,41 @@
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        Map<Character,Integer> mp = new HashMap<>();
+
+        for(int i=0;i<text.length();i++){
+            char a = text.charAt(i);
+            if(mp.containsKey(a)){
+                int val = mp.get(a);
+                mp.put(a,val+1);
+            }
+            else mp.put(a,1);
+        }
+        int times = 0;
+        String main = "balloon";
+        int flag = 0;
+        while(true){
+            flag = 0;
+            for(int i=0;i<main.length();i++){
+                char s = main.charAt(i);
+                if(mp.containsKey(s)){
+                    int n = mp.get(s);
+                    if(n==0){
+                        flag = 1;
+                        break;
+                    }
+                    else{
+                        mp.put(s,n-1);
+                    }
+                }
+                else{
+                    flag=1;
+                    break;
+                }
+                
+            }
+            if(flag == 0) times++;
+            else break;
+        }
+        return times;
+    }
+}
