@@ -1,0 +1,27 @@
+class Solution {
+    public int minTimeToType(String word) {
+        int time = 0;
+        word = "a" + word;
+        for(int i=0;i<word.length()-1;i++){
+            int pos1 = (int)(word.charAt(i)) - 97 ; 
+            int pos2 = (int)(word.charAt(i+1)) - 97 ; 
+            int forward = Math.abs(pos1-pos2);
+            int backward = 26 - forward;
+            int mini = Math.min(forward,backward);
+
+            //System.out.println(forward + " " + backward);
+            time += mini;
+            //System.out.println(time);
+            time += 1 ;//printing
+            //System.out.println(time);
+
+        }
+       
+        return time;
+    }
+}
+
+// abc 
+// a pos1 = 97 - 97 = 0; pos2 = 26 - 0 = 26;
+// b pos1 = 1 pos2 = 25
+// c pos1 = 2 pos2 = 24
