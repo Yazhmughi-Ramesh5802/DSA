@@ -1,0 +1,22 @@
+class Solution {
+    public String destCity(List<List<String>> paths) {
+        List<String> start = new ArrayList<>();
+        List<String> des = new ArrayList<>();
+
+        for(int i=0;i<paths.size();i++){
+            String a = paths.get(i).get(0);
+            String b = paths.get(i).get(1);
+
+            start.add(a);
+            des.add(b);
+        }
+
+        for(int i=0;i<des.size();i++){
+            String t = des.get(i);
+            if(!start.contains(t)) return t;
+        }
+        return "";
+    }
+}
+
+
