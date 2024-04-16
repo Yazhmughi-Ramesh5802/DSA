@@ -1,0 +1,24 @@
+class Solution {
+    public boolean leapCheck(int year){
+        if(year%400==0 || (year%100!=0 && year%4==0)) return true;
+        else return false;
+    }
+    public int dayOfYear(String date) {
+        int[] days = {31,28,31,30,31,30,31,31,30,31,30,31};
+        int total = 0;
+        
+        int year = Integer.parseInt(date.substring(0,4));
+
+        int month = Integer.parseInt(date.substring(5,7));
+        int d = Integer.parseInt(date.substring(8));
+        System.out.println(month);
+        for(int i=0;i<month-1;i++){
+            if(leapCheck(year) && i==1) total+=29;
+            else if(i==1) total+=28;
+            else total += days[i];
+        }
+        total += d;
+        return total;
+
+    }
+}
