@@ -1,0 +1,65 @@
+class Solution {
+    public List<List<String>> displayTable(List<List<String>> orders) {
+
+        TreeMap<Integer, HashMap<String, Integer>> mp = new TreeMap<>();
+        
+        List<List<String>> answer = new ArrayList<>();
+        ArrayList<String> dishes = new ArrayList<>();
+        for(int i=0;i<orders.size();i++){
+            String customer = orders.get(i).get(0); 
+            int table = Integer.parseInt(orders.get(i).get(1));
+            String dish = orders.get(i).get(2);
+
+            if(!dishes.contains(dish)) dishes.add(dish);
+
+            if(mp.containsKey(table)){
+                if(mp.get(table).containsKey(dish)){
+                    int val = mp.get(table).get(dish);
+                    mp.get(table).put(dish,val+1);
+                }
+                else{
+                    mp.get(table).put(dish,1);
+                }
+            }
+            else{
+                HashMap<String,Integer> temp = new HashMap<>();
+                temp.put(dish,1);
+                mp.put(table,temp);
+            }
+        }
+        Collections.sort(dishes);
+        for(int i=0;i<=mp.size();i++) answer.add(new ArrayList<>());
+        answer.get(0).add("Table");
+        for(int i=0;i<dishes.size();i++) answer.get(0).add(dishes.get(i));
+        int k = 1;
+        for(int s : mp.keySet()){
+
+            String tableNum = Integer.toString(s);
+            answer.get(k).add(tableNum);
+            for(int j=0;j<dishes.size();j++){
+                String d = dishes.get(j);
+                
+                if(mp.get(s).containsKey(d)){
+                    int a = mp.get(s).get(d);
+                    String b = Integer.toString(a);
+                    answer.get(k).add(b);
+                }
+                else{
+                    answer.get(k).add("0");
+                }
+                
+            }
+            k++;
+        }
+
+        for(int i=1;i<mp.size()-1;i++){
+            for(int j=i+1;j<mp.size();j++){
+                
+            }
+        }
+        System.out.println(dishes);
+        System.out.println(answer);
+        return answer;
+
+    }
+}
