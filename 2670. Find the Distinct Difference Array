@@ -1,0 +1,20 @@
+class Solution {
+    public int[] distinctDifferenceArray(int[] nums) {
+        int[] ans = new int[nums.length];
+        Set<Integer> pf = new HashSet<>();
+        Set<Integer> sf = new HashSet<>();
+
+        for(int i=0;i<nums.length;i++){
+            pf = new HashSet<>();
+            sf = new HashSet<>();
+            for(int j=0;j<=i;j++){
+                pf.add(nums[j]);
+            }
+            for(int j=i+1;j<nums.length;j++){
+                sf.add(nums[j]);
+            }
+            ans[i] = pf.size()- sf.size();
+        }
+        return ans;
+    }
+}
