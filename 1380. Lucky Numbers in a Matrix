@@ -1,0 +1,36 @@
+class Solution {
+    public List<Integer> luckyNumbers (int[][] matrix) {
+
+        List<Integer> ans =  new ArrayList<>();
+        HashMap<Integer,Integer> row = new HashMap<>();
+        HashMap<Integer,Integer> col = new HashMap<>();
+
+        for(int i=0;i<matrix.length;i++){
+            int mini = matrix[i][0];
+            
+            for(int j=0;j<matrix[i].length;j++){
+                if(mini > matrix[i][j]){
+                   
+                    mini = matrix[i][j];
+                }
+            }
+            row.put(mini,i);
+        }
+        for(int i=0;i<matrix[0].length;i++){
+            int maxi = matrix[0][i];
+           
+            for(int j=0;j<matrix.length;j++){
+                if(maxi < matrix[j][i]){
+                   
+                    maxi = matrix[j][i];
+                }
+            }
+            col.put(maxi,i);
+        }
+        System.out.println(row+"\n"+col);
+        for(int k : row.keySet()){
+            if(col.containsKey(k)) ans.add(k);
+        }
+        return ans;
+    }
+}
