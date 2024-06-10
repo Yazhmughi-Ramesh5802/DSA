@@ -1,0 +1,19 @@
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=nums.length-1;i>=0;i--){
+            int temp = nums[i];
+            while(temp!=0){
+                int d = temp%10;
+                temp/=10;
+                ans.add(d);
+            }
+        }
+        int[] arr = new int[ans.size()];
+        for(int i=ans.size()-1;i>=0;i--){
+            arr[ans.size() - i - 1] = (ans.get(i));
+        }
+        return arr;
+    }
+}
+// we do the operation in the reverse order of array and reverse the arraylist to get the expected output.
