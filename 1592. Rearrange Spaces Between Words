@@ -1,0 +1,64 @@
+class Solution {
+    public String space(int n){
+        String sp = "";
+        for(int i=0;i<n;i++){
+            sp+=" ";
+        }
+        return sp;
+    }
+    public String reorderSpaces(String text) {
+        
+        text+=" ";
+
+        int spaces = 0;
+        ArrayList<String> s = new ArrayList<>();
+        String word = "";
+        for(int i=0;i<text.length();i++){
+            if(text.charAt(i) == ' '){
+                spaces++;
+            }
+            else {
+                word+=Character.toString(text.charAt(i));
+            }
+            if(text.charAt(i) == ' ' && !word.equals("")){
+                s.add(word);
+                word="";
+            }
+
+        }
+        spaces = spaces-1;
+
+        int reqSpace = 0;
+        int rem = 0;
+        int l = s.size()-1;
+        if(l!=0){
+            if(spaces%(s.size()-1) == 0){
+                reqSpace = spaces/(s.size()-1);
+                rem=0;
+            }
+            else{
+                reqSpace = spaces/(s.size()-1);
+                rem = spaces%(s.size()-1);
+            }
+        }
+        else {
+            rem=spaces;
+        }
+        
+        System.out.println(s +" " +reqSpace);
+        String sp = "";
+        String ans = "";
+        String rm = "";
+        sp = space(reqSpace);
+        rm = space(rem);
+        
+        for(int i=0;i<s.size()-1;i++){
+            ans+=s.get(i);
+            ans+=sp;
+        }
+
+        ans+=s.get(s.size()-1);
+        ans+=rm;
+        return ans;
+    }
+}
