@@ -1,0 +1,27 @@
+class Solution {
+    public void split(List<String> result,String s,char sep){
+        String temp = "";
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) == sep){
+                if(!temp.equals("")) result.add(temp);
+                temp = "";
+            }
+            else{
+                temp+=Character.toString(s.charAt(i));
+            }
+        }
+    }
+    public List<String> splitWordsBySeparator(List<String> words, char separator) {
+        List<String> result = new ArrayList<>();
+
+        for(int i=0;i<words.size();i++){
+            String w = words.get(i);
+            w+=Character.toString(separator);
+
+            split(result,w,separator);
+
+        }
+
+        return result;
+    }
+}
