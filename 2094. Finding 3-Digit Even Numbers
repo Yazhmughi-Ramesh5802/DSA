@@ -1,0 +1,45 @@
+class Solution {
+
+    public void recur(int[] digits,int[] checked,int n,HashSet<Integer> arr,int l,int num){
+        
+        if(n == 3) {
+            if(num%2 == 0) arr.add(num);
+            return;
+        }
+
+        for(int i=0;i<l;i++){
+            
+            if(checked[i] == 0 && (n!=0 || digits[i] != 0)){ //second condition is to avoid 0 coming first
+                checked[i] = 1;
+                num = num*10;
+                num += digits[i];
+                recur(digits,checked,n+1,arr,l,num);
+                num = num/10;
+                checked[i] = 0;
+
+            }
+        }
+
+
+    }
+    public int[] findEvenNumbers(int[] digits) {
+
+        //Arrays.sort(digits);
+        
+        HashSet<Integer> arr = new HashSet<>();
+        int l = digits.length;
+        int[] checked = new int[l];
+        int num = 0;
+
+        recur(digits,checked,0,arr,l,num);
+
+
+        int[] result = new int[arr.size()];
+        int k = 0;
+        for(int temp:arr) result[k++] = temp;
+        Arrays.sort(result);
+
+        System.out.println(arr);
+        return result;
+    }
+}
